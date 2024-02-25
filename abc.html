@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Colorful Page with Navbar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5c77e;
+      background: linear-gradient(to bottom, #f9ddb1, #f5c77e);
+      color: #333;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    header {
+      background-color: #e88504;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .logo img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
+    nav a {
+      color: #ec9006;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 15px;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #d24e01;
+    }
+
+    nav a::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #d24e01;
+      bottom: 0;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: bottom right;
+      transition: transform 0.3s;
+    }
+
+    nav a:hover::before {
+      transform: scaleX(1);
+      transform-origin: bottom left;
+    }
+
+    .container {
+      text-align: center;
+      padding: 100px;
+      background-color: #e88504;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+      color: #d24e01;
+    }
+
+    p {
+      color: #ee9f27;
+    }
+
+    a {
+      color: #ec9006;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <img src="your-logo-image-url.jpg" alt="Logo">
+    </div>
+    <nav>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Welcome to Colorful Page</h1>
+    <p>This is a simple example page designed using a vibrant color scheme.</p>
+    <p>Feel free to <a href="#">explore</a> and enjoy the colors!</p>
+  </div>
+</body>
+</html>

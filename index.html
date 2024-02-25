@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Hungry Heaven | Multi Steps Form</title>
+    <link rel="stylesheet" href="styl.css">    
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v8.2.0/ol.css">
+
+</head>
+
+<body>
+<header>
+  <img src="logo.png" alt="logo" id="logo" class="logo">
+  <nav>
+    <a href="#" class="nav-links">Home</a>
+    <a href="#" class="nav-links">Our Moto</a>
+    <a href="#" class="nav-links">Charity Donation</a>
+    <a href="#" class="nav-links">Contact</a>
+  </nav>
+</header>
+<main>
+
+  <div id="hero">
+    <h1>Hungry Heaven</h1>
+  <p>We don't let anyone Sleep Hungry</p>
+</div>
+    <div class="wrapper">
+        <div class="header">
+            <ul>
+                <li class="active form_1_progessbar">
+                    <div>
+                        <p>1</p>
+                    </div>
+                </li>
+                <li class="form_2_progessbar">
+                    <div>
+                        <p>2</p>
+                    </div>
+                </li>
+                <li class="form_3_progessbar">
+                    <div>
+                        <p>3</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="form_wrap">
+            <div class="form_1 data_info">
+                <h1>Step 1: Image Upload</h1>
+                <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" id="imageInput" accept="image/*" required>
+                    <button type="button" onclick="uploadImage()">Upload Image</button>
+                </form>
+                <div id="imageContainer">
+                    <h2>Uploaded Image:</h2>
+                    <img id="uploadedImage" src="uploads/default.jpg" alt="Uploaded Image">
+                </div>
+            </div>
+            <div class="form_2 data_info" style="display: none;">
+                <h2>Add Address</h2>
+
+                <form id="addressForm" onsubmit="submitForm(event)">
+                    <label for="addressLine1">Address Line 1:</label>
+                    <input type="text" id="addressLine1" required>
+
+                    <label for="addressLine2">Address Line 2:</label>
+                    <input type="text" id="addressLine2">
+
+                    <label for="city">City:</label>
+                    <input type="text" id="city" required>
+
+                    <label for="state">State:</label>
+                    <input type="text" id="state" required>
+
+                    <label for="postalCode">Postal Code:</label>
+                    <input type="text" id="postalCode" required>
+
+                    <label for="country">Country:</label>
+                    <input type="text" id="country" required>
+
+                    <button type="button" onclick="openMap()">Select Location</button>
+                    <button type="button" onclick="useCurrentLocation()">Use Current Location</button>
+
+                    <div id="map"></div>
+                    <button id="submit">Submit</button>
+                    <div id="successMessage" style="visibility: hidden;">
+                        <p>Address submitted successfully!</p>
+                    </div>
+                </form>
+            </div>
+            <div class="form_3 data_info" style="display: none;">
+                <div id="map1"></div>
+                <div id="buttons">
+                    <button onclick="showCurrentLocation()">Current Location</button>
+                    <button onclick="showKingStreetLocation()">King Street, Cambridge</button>
+                </div>
+            </div>
+        </div>
+        <div class="btns_wrap">
+            <div class="common_btns form_1_btns">
+                <button type="button" class="btn_next">Next <span class="icon"><ion-icon
+                            name="arrow-forward-sharp"></ion-icon></span></button>
+            </div>
+            <div class="common_btns form_2_btns" style="display: none;">
+                <button type="button" class="btn_back"><span class="icon"><ion-icon
+                            name="arrow-back-sharp"></ion-icon></span>Back</button>
+                <button type="button" class="btn_next">Next <span class="icon"><ion-icon
+                            name="arrow-forward-sharp"></ion-icon></span></button>
+            </div>
+            <div class="common_btns form_3_btns" style="display: none;">
+                <button type="button" class="btn_back"><span class="icon"><ion-icon
+                            name="arrow-back-sharp"></ion-icon></span>Back</button>
+                <button type="button" class="btn_done">Done</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal_wrapper">
+        <div class="shadow"></div>
+        <div class="success_wrap">
+            <span class="modal_icon"><ion-icon name="checkmark-sharp"></ion-icon></span>
+            <p>You have successfully completed the process.</p>
+          </div>
+        </div>
+        <section id="moto">
+          <div class="mission-container container">
+            <h2>Our Mission</h2>
+            <p>
+                At [Your Charity Name], we believe that every person deserves a warm, nourishing meal. In a world
+                abundant with resources, we strive to bridge the gap between surplus and scarcity. Our mission is simple
+                yet profound: to provide food for those who need it the most.
+            </p>
+        </div>
+
+        <div class="how-it-works-container container">
+            <h2>How It Works</h2>
+            <p>
+                At [Your Charity Name], we've established a seamless platform where you can contribute to the cause of
+                eradicating hunger. Through our website, you can make a difference by sponsoring meals for those facing
+                food insecurity. Whether it's a one-time donation or a recurring contribution, each act of kindness
+                contributes to a collective impact.
+            </p>
+        </div>
+
+        <div class="impact-container container">
+            <h2>The Impact</h2>
+            <p>
+                The impact of a nourishing meal extends far beyond a satisfied stomach. It empowers individuals, offering
+                them hope, dignity, and the strength to face life's challenges. Through your support, we aspire to create
+                a ripple effect of positive change, uplifting communities and fostering a brighter future for all.
+            </p>
+        </div>
+
+        <div class="why-choose-container container">
+            <h2>Why Choose [Your Charity Name]?</h2>
+            <ul>
+                <li>
+                    <strong>Transparency:</strong> We are committed to transparency in all our operations. Your
+                    donations directly fund meal programs, and we provide regular updates on the impact your contribution
+                    has made.
+                </li>
+                <li>
+                    <strong>Efficiency:</strong> With a dedicated team and strategic partnerships, we ensure that your
+                    support goes a long way. We strive to maximize the number of meals provided with every donation.
+                </li>
+                <li>
+                    <strong>Community Engagement:</strong> [Your Charity Name] is more than just a platform for giving;
+                    it's a community united by the belief that together, we can make a significant difference in the
+                    lives of those in need.
+                </li>
+            </ul>
+        </div>
+
+        <div class="donate-container container">
+            <h2>Join Us in the Fight Against Hunger</h2>
+            <p>Your involvement can be the turning point in someone's life. Join us in the fight against hunger.
+                Together, we can be a beacon of hope, ensuring that no one goes to bed hungry.</p>
+            <button><a href="#donate">Donate Now and Be the Change!</a></button>
+        </div>
+
+        <div class="faq-container container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-card">
+                <h3>How can I donate?</h3>
+                <p>You can donate by visiting our website and clicking on the "Donate Now" button. Choose your
+                    contribution amount and follow the simple steps to make a difference.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3>Where does my donation go?</h3>
+                <p>Your donation directly funds meal programs. We ensure transparency in our operations and provide
+                    regular updates on the impact your contribution has made.</p>
+            </div>
+
+            <div class="faq-card">
+                <h3>Can I make a recurring donation?</h3>
+                <p>Yes, you can choose to make a recurring donation to support our ongoing efforts in the fight against
+                    hunger.</p>
+            </div>
+        </div>
+        </section>
+      </main>
+    <script>
+       
+
+    </script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ol@v8.2.0/dist/ol.js"></script>
+
+</body>
+
+</html>
